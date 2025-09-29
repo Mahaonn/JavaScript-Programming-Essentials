@@ -6,7 +6,7 @@
     // Check if inputs are valid numbers
     if (!isNaN(num1) && !isNaN(num2)) {
     // Perform the operation
-                    let result = multiply(num1, num2);
+                    let result = calculateAll(num1, num2);
 
                     // Display the result
                     displayResult(result);
@@ -15,17 +15,33 @@
                 }
             }
 
-            function multiply(a, b) {
+            function calculateAll(a, b) {
                 // Introduce a debugger statement to pause execution
                 debugger;
+                let sum = a + b;
+                let mult = a * b;
+                let devision = b !== 0 ? Number((a / b).toFixed(1)) : "Division by zero";
 
-                // Multiply the numbers
-                return a * b;
+                return {
+                    sum,
+                    mult,
+                    devision
+                };
             }
 
-            function displayResult(result) {
+            function displayResult(results) {
                 // Display the result in the paragraph element
                 const resultElement = document.getElementById('result');
-                resultElement.textContent = `The result is: ${result}`;
+
+                if (typeof results === "string") {
+                    resultElement.textContent = `The result is: ${results}`;
+                } else{
+                    resultElement.innerHTML = `
+                    Sum: ${results.sum} <br>
+                    Multiply: ${results.mult} <br>
+                    Devision: ${results.devision}
+                    `;
+                }
+                
             }
         
